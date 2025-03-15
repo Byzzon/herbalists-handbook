@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: |cFF61bf47Herbalist's Handbook
+## Notes: Shows a list of all flowers and where to gather them.
+## Author: Byzzon
+## Version: GIT
+
+FlowerList.lua
+ByzzonUI.lua
