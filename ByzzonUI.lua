@@ -4,8 +4,8 @@ SLASH_BYZZONUI1 = "/byzzonui"
 --     Player = "player"
 -- }
 -- local playerName = UnitName(Unit.Player);
+local bookTitle = "Herbalist's Handbook (Beta)"
 local isVisible = true
-
 local flowers = ByzzonUI.flowerList;
 
 local LedgerFrame = CreateFrame("Frame", "FRAME_LEDGER_PANEL", UIParent)
@@ -60,7 +60,7 @@ BottomRight:SetPoint("BOTTOMRIGHT", LedgerFrame, "BOTTOMRIGHT", 0, 0)
 
 local TitleText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_TITLE_TEXT", "ARTWORK", "GameFontNormal")
 TitleText:SetPoint("CENTER", LedgerFrame, "CENTER", 6, 230)
-TitleText:SetText("Herbalist's Handbook")
+TitleText:SetText(bookTitle)
 
 local PageText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_PAGE_TEXT", "ARTWORK", "GameFontNormal")
 PageText:SetWidth(102)
