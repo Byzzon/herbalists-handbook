@@ -1,0 +1,22 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <Frame name="MyAddonFrame" parent="UIParent" movable="true" enableMouse="true">
+        <Size>
+            <AbsDimension x="200" y="100" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" />
+        </Anchors>
+        <Backdrop bgFile="Interface\\DialogFrame\\UI-DialogBox-Background" />
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString name="MyAddonText" inherits="GameFontNormal">
+                    <Anchors>
+                        <Anchor point="CENTER" />
+                    </Anchors>
+                    <Text>My Addon Frame</Text>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+</Ui>
