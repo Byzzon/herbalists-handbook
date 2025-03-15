@@ -7,7 +7,6 @@ local peacebloom = {
     yellowLevel = 25,
     greenLevel = 50,
     grayLevel = 100,
-    marginTop = 0,
     locations = "All low level zones"
 }
 
@@ -18,7 +17,6 @@ local silverleaf = {
     yellowLevel = 25,
     greenLevel = 50,
     grayLevel = 100,
-    marginTop = -45,
     locations = "All low level zones"
 }
 
@@ -29,7 +27,6 @@ local earthroot = {
     yellowLevel = 40,
     greenLevel = 70,
     grayLevel = 115,
-    marginTop = -90,
     locations = "All low level zones"
 }
 
@@ -40,7 +37,6 @@ local mageroyal = {
     yellowLevel = 75,
     greenLevel = 100,
     grayLevel = 150,
-    marginTop = -135,
     locations = "All low level zones"
 }
 
@@ -51,7 +47,6 @@ local briarthorn = {
     yellowLevel = 95,
     greenLevel = 120,
     grayLevel = 170,
-    marginTop = -180,
     locations = "All low level zones, especially Silverpine Forest"
 }
 
@@ -62,8 +57,38 @@ local swiftthistle = {
     yellowLevel = "",
     greenLevel = "",
     grayLevel = "",
-    marginTop = -225,
-    locations = "All low level zones, found on  [Briarthorn] and  [Mageroyal]"
+    locations = "All low level zones, found on [Briarthorn] and [Mageroyal]"
 }
 
-ByzzonUI.flowerList = { peacebloom, silverleaf, earthroot, mageroyal, briarthorn, swiftthistle }
+local stranglekelp = {
+    iconPath = [[Interface\icons\inv_misc_herb_11]],
+    name = "Stranglekelp",
+    orangeLevel = 85,
+    yellowLevel = 115,
+    greenLevel = 135,
+    grayLevel = 185,
+    locations = "In the ocean, especially near Menethil Harbour and Zoram Strand"
+}
+
+local bruiseweed = {
+    iconPath = [[Interface\icons\inv_misc_herb_01]],
+    name = "Bruiseweed",
+    orangeLevel = 100,
+    yellowLevel = 130,
+    greenLevel = 150,
+    grayLevel = 200,
+    locations = "Near Houses in low-mid level zones"
+}
+
+local wild_steelbloom = {
+    iconPath = [[Interface\icons\inv_misc_flower_01]],
+    name = "Wild Steelbloom",
+    orangeLevel = 115,
+    yellowLevel = 145,
+    greenLevel = 165,
+    grayLevel = 215,
+    locations = "All low-mid level zones"
+}
+
+ByzzonUI.flowerList = { peacebloom, silverleaf, earthroot, mageroyal, briarthorn, swiftthistle, stranglekelp, bruiseweed,
+    wild_steelbloom }

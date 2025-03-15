@@ -9,7 +9,7 @@ local isVisible = true
 local flowers = ByzzonUI.flowerList;
 
 local LedgerFrame = CreateFrame("Frame", "FRAME_LEDGER_PANEL", UIParent)
-LedgerFrame:SetWidth(384)
+LedgerFrame:SetWidth(395)
 LedgerFrame:SetHeight(512)
 LedgerFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 
@@ -42,7 +42,7 @@ TopLeft:SetPoint("TOPLEFT", LedgerFrame, "TOPLEFT", 0, 0)
 
 local TopRight = LedgerFrame:CreateTexture(nil, "ARTWORK")
 TopRight:SetTexture([[Interface\Spellbook\UI-SpellbookPanel-TopRight]])
-TopRight:SetWidth(128)
+TopRight:SetWidth(139)
 TopRight:SetHeight(256)
 TopRight:SetPoint("TOPRIGHT", LedgerFrame, "TOPRIGHT", 0, 0)
 
@@ -54,7 +54,7 @@ BottomLeft:SetPoint("BOTTOMLEFT", LedgerFrame, "BOTTOMLEFT", 0, 0)
 
 local BottomRight = LedgerFrame:CreateTexture(nil, "ARTWORK")
 BottomRight:SetTexture([[Interface\Spellbook\UI-SpellbookPanel-BotRight]])
-BottomRight:SetWidth(128)
+BottomRight:SetWidth(139)
 BottomRight:SetHeight(256)
 BottomRight:SetPoint("BOTTOMRIGHT", LedgerFrame, "BOTTOMRIGHT", 0, 0)
 
@@ -70,13 +70,14 @@ PageText:SetText("Page 1")
 local FlowerFrame = CreateFrame("Frame", "FlowerFrame", LedgerFrame);
 FlowerFrame:SetWidth(384)
 FlowerFrame:SetHeight(512)
-FlowerFrame:SetPoint("TOPLEFT", LedgerFrame, "TOPLEFT", 0, -90)
+FlowerFrame:SetPoint("TOPLEFT", LedgerFrame, "TOPLEFT", 40, -90)
 
-function addFlower(iconPath, flowerName, orangeLevel, yellowLevel, greenLevel, grayLevel, marginTop, locations)
+function addFlower(iconPath, flowerName, orangeLevel, yellowLevel, greenLevel, grayLevel, marginLeft, marginTop,
+                   locations)
     local IconFrame = CreateFrame("Button", "IconFrame", FlowerFrame);
     IconFrame:SetWidth(40)
     IconFrame:SetHeight(40)
-    IconFrame:SetPoint("TOPLEFT", FlowerFrame, "TOPLEFT", 35, marginTop)
+    IconFrame:SetPoint("TOPLEFT", FlowerFrame, "TOPLEFT", marginLeft, marginTop)
 
     local FlowerIcon = IconFrame:CreateTexture(nil, "OVERLAY")
     FlowerIcon:SetTexture(iconPath)
@@ -107,9 +108,25 @@ function addFlower(iconPath, flowerName, orangeLevel, yellowLevel, greenLevel, g
     end)
 end
 
-for _, flower in ipairs(flowers) do
-    addFlower(flower.iconPath, flower.name, flower.orangeLevel, flower.yellowLevel, flower.greenLevel, flower.grayLevel,
-        flower.marginTop, flower.locations)
+for index, flower in ipairs(flowers) do
+    local row
+    local col
+    local marginLeft
+    local marginTop
+
+    if index < 7 then
+        row = index - 1;
+        col = 0;
+    else
+        row = index - 7
+        col = 1;
+    end
+
+    marginLeft = col * 150
+    marginTop = row * -50
+
+    addFlower(flower.iconPath, flower.name, flower.orangeLevel, flower.yellowLevel, flower.greenLevel,
+        flower.grayLevel, marginLeft, marginTop, flower.locations);
 end
 
 
