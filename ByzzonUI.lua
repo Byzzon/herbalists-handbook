@@ -22,7 +22,7 @@ LedgerFrame:SetScript("OnDragStart", function() LedgerFrame:StartMoving() end)
 LedgerFrame:SetScript("OnDragStop", function() LedgerFrame:StopMovingOrSizing() end)
 
 local CloseButton = CreateFrame("Button", "FRAME_LEDGER_PANEL_BUTTON_CLOSE", LedgerFrame, "UIPanelCloseButton")
-CloseButton:SetPoint("CENTER", LedgerFrame, "TOPRIGHT", -44, -25)
+CloseButton:SetPoint("CENTER", LedgerFrame, "TOPRIGHT", -48, -25)
 CloseButton:SetScript("OnClick", function()
     LedgerFrame:Hide()
     isVisible = false
