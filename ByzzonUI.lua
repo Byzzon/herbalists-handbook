@@ -7,6 +7,7 @@ SLASH_BYZZONUI1 = "/byzzonui"
 local bookTitle = "Herbalist's Handbook (Beta)"
 local isVisible = true
 local flowers = ByzzonUI.flowerList;
+local currentPage = 1;
 
 local function getHerbalismLevel()
     for i = 1, GetNumSkillLines() do
@@ -77,7 +78,7 @@ TitleText:SetText(bookTitle)
 local PageText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_PAGE_TEXT", "ARTWORK", "GameFontNormal")
 PageText:SetWidth(102)
 PageText:SetPoint("BOTTOM", LedgerFrame, "BOTTOM", -14, 96)
-PageText:SetText("Page 1")
+PageText:SetText("Page " .. currentPage)
 
 local LevelText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_PAGE_TEXT", "ARTWORK", "GameFontNormal")
 LevelText:SetWidth(120)
@@ -90,6 +91,53 @@ local FlowerFrame = CreateFrame("Frame", "FlowerFrame", LedgerFrame);
 FlowerFrame:SetWidth(384)
 FlowerFrame:SetHeight(512)
 FlowerFrame:SetPoint("TOPLEFT", LedgerFrame, "TOPLEFT", 40, -90)
+
+-----------------
+-- NEXT BUTTON --
+-----------------
+local nextButton = CreateFrame("Button", "HerbalistNextButton", LedgerFrame)
+
+-- Set Size
+nextButton:SetWidth(32)
+nextButton:SetHeight(32)
+
+-- Set Strata
+nextButton:SetFrameStrata("FULLSCREEN")
+
+-- Set Position (Adjust as needed)
+nextButton:SetPoint("CENTER", LedgerFrame, "CENTER", 50, -155) -- Example position
+
+-- Normal Texture
+local normalTexture = nextButton:CreateTexture(nil, "BACKGROUND")
+normalTexture:SetTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
+normalTexture:SetAllPoints()
+nextButton:SetNormalTexture(normalTexture)
+
+-- Pushed Texture
+local pushedTexture = nextButton:CreateTexture(nil, "BACKGROUND")
+pushedTexture:SetTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
+pushedTexture:SetAllPoints()
+nextButton:SetPushedTexture(pushedTexture)
+
+-- Disabled Texture
+local disabledTexture = nextButton:CreateTexture(nil, "BACKGROUND")
+disabledTexture:SetTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Disabled")
+disabledTexture:SetAllPoints()
+nextButton:SetDisabledTexture(disabledTexture)
+
+-- Highlight Texture
+local highlightTexture = nextButton:CreateTexture(nil, "HIGHLIGHT")
+highlightTexture:SetTexture("Interface\\Buttons\\UI-Common-MouseHilight")
+highlightTexture:SetAllPoints()
+highlightTexture:SetBlendMode("ADD")
+nextButton:SetHighlightTexture(highlightTexture)
+
+-- Button Functionality (Example: Print message when clicked)
+nextButton:SetScript("OnClick", function()
+    currentPage = currentPage + 1;
+    PageText:SetText("Page " .. currentPage)
+end)
+
 
 function addFlower(iconPath, flowerName, orangeLevel, yellowLevel, greenLevel, grayLevel, marginLeft, marginTop,
                    locations)
