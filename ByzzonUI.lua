@@ -8,6 +8,15 @@ local bookTitle = "Herbalist's Handbook (Beta)"
 local isVisible = true
 local flowers = ByzzonUI.flowerList;
 
+local function getHerbalismLevel()
+    for i = 1, GetNumSkillLines() do
+        local skillName, _, _, skillRank = GetSkillLineInfo(i)
+        if skillName == "Herbalism" then
+            return skillRank
+        end
+    end
+end
+
 local LedgerFrame = CreateFrame("Frame", "FRAME_LEDGER_PANEL", UIParent)
 LedgerFrame:SetWidth(395)
 LedgerFrame:SetHeight(512)
@@ -66,6 +75,11 @@ local PageText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_PAGE_TEXT", "A
 PageText:SetWidth(102)
 PageText:SetPoint("BOTTOM", LedgerFrame, "BOTTOM", -14, 96)
 PageText:SetText("Page 1")
+
+local LevelText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_PAGE_TEXT", "ARTWORK", "GameFontNormal")
+LevelText:SetWidth(120)
+LevelText:SetPoint("TOP", LedgerFrame, "TOP", 0, -50)
+LevelText:SetText("Herbalism level |cFFFFFFFF" .. getHerbalismLevel())
 
 local FlowerFrame = CreateFrame("Frame", "FlowerFrame", LedgerFrame);
 FlowerFrame:SetWidth(384)
@@ -140,6 +154,10 @@ local function toggle()
         isVisible = true;
     end
 end
+
+
+
+
 
 
 
