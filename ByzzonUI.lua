@@ -15,6 +15,8 @@ local function getHerbalismLevel()
             return skillRank
         end
     end
+
+    return 0
 end
 
 local LedgerFrame = CreateFrame("Frame", "FRAME_LEDGER_PANEL", UIParent)
@@ -79,7 +81,9 @@ PageText:SetText("Page 1")
 local LevelText = LedgerFrame:CreateFontString("FRAME_LEDGER_PANEL_PAGE_TEXT", "ARTWORK", "GameFontNormal")
 LevelText:SetWidth(120)
 LevelText:SetPoint("TOP", LedgerFrame, "TOP", 0, -50)
-LevelText:SetText("Herbalism level |cFFFFFFFF" .. getHerbalismLevel())
+if getHerbalismLevel() > 0 then
+    LevelText:SetText("Herbalism level |cFFFFFFFF" .. getHerbalismLevel())
+end
 
 local FlowerFrame = CreateFrame("Frame", "FlowerFrame", LedgerFrame);
 FlowerFrame:SetWidth(384)
