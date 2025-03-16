@@ -20,6 +20,7 @@ local function getHerbalismLevel()
 end
 
 local LedgerFrame = CreateFrame("Frame", "FRAME_LEDGER_PANEL", UIParent)
+LedgerFrame:SetFrameStrata("DIALOG")
 LedgerFrame:SetWidth(395)
 LedgerFrame:SetHeight(512)
 LedgerFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
@@ -97,6 +98,14 @@ function addFlower(iconPath, flowerName, orangeLevel, yellowLevel, greenLevel, g
     IconFrame:SetHeight(40)
     IconFrame:SetPoint("TOPLEFT", FlowerFrame, "TOPLEFT", marginLeft, marginTop)
 
+    local border = IconFrame:CreateTexture(nil, "HIGHLIGHT")
+    border:SetTexture("Interface\\Buttons\\UI-Quickslot2")
+    border:SetPoint("TOPLEFT", IconFrame, "TOPLEFT", -15, 15) -- Expand outward
+    border:SetPoint("BOTTOMRIGHT", IconFrame, "BOTTOMRIGHT", 15, -15)
+    border:SetBlendMode("ADD")                                -- Makes it glow slightly
+    -- border:SetAllPoints()
+    border:SetAlpha(0)
+
     local FlowerIcon = IconFrame:CreateTexture(nil, "OVERLAY")
     FlowerIcon:SetTexture(iconPath)
     FlowerIcon:SetWidth(40)
@@ -119,10 +128,12 @@ function addFlower(iconPath, flowerName, orangeLevel, yellowLevel, greenLevel, g
             "|cffffffffCan be gathered in:|r")
         GameTooltip:AddLine(locations)
         GameTooltip:Show()
+        border:SetAlpha(1)
     end)
 
     IconFrame:SetScript("OnLeave", function()
         GameTooltip:Hide()
+        border:SetAlpha(0)
     end)
 end
 
@@ -158,11 +169,6 @@ local function toggle()
         isVisible = true;
     end
 end
-
-
-
-
-
 
 
 SlashCmdList["BYZZONUI"] = toggle
